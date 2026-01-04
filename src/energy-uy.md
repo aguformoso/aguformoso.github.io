@@ -115,10 +115,14 @@ Inputs.table(data, { value: data })
 ```
 
 ```js echo
-display(text.split("\n"))
-display(text.split("\n").slice(36))
-display(text.split("\n").slice(36).join(''))
-display(data_)
+display(body.length)
+display(body)
+display(header.length)
+display(header)
+display(d3
+    .dsvFormat(";")
+    .parse(`${header}\n${body}`)
+)
 ```
 
 </div>
