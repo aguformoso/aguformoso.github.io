@@ -114,25 +114,11 @@ This is the data from the source, holding one datum per month, with each datum c
 Inputs.table(data, { value: data })
 ```
 
-
 ```js echo
-display(text)
-```
-
-```js echo
-display(header)
-```
-
-```js echo
-display(body)
-```
-
-```js echo
+display(text.split("\n"))
+display(text.split("\n").slice(36))
+display(text.split("\n").slice(36).join(''))
 display(data_)
-```
-
-```js echo
-display(data)
 ```
 
 </div>
