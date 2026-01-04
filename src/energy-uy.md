@@ -114,17 +114,6 @@ This is the data from the source, holding one datum per month, with each datum c
 Inputs.table(data, { value: data })
 ```
 
-```js echo
-display(body.length)
-display(body)
-display(header.length)
-display(header)
-display(d3
-    .dsvFormat(";")
-    .parse(`${header}\n${body}`)
-)
-```
-
 </div>
 
 [Link to the data download page](https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-energia-electrica)
@@ -279,10 +268,11 @@ let header = text
   )
   .join(" ")
   .replaceAll("�", "_") // unicode replacement character
+  .replaceAll("\n\r", "")
 ```
 
 ```js
-let body = text.split("\n").slice(36).join("")
+let body = text.split("\n").slice(36).join("").replaceAll("\n\r", "")
 ```
 
 ```js
