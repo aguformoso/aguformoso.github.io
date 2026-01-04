@@ -177,14 +177,6 @@ Inputs.table(data, { value: data })
 [//]: # (```)
 
 ```js
-let bg = dark ? 'darkgrey' : 'lightgrey'
-```
-
-```js
-let fg = dark ? 'red' : 'blue'
-```
-
-```js
 let dataLast = data.sort((a, b) => b.date - a.date)[0]
 
 ```
