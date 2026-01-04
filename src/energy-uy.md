@@ -272,7 +272,8 @@ let header = text
 ```
 
 ```js
-let body = text.split("\n").slice(36).join("").replaceAll("\n\r", "")
+let body = text
+    .split("\n").slice(36).join("\n")
 ```
 
 ```js
