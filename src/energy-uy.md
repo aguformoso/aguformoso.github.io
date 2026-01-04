@@ -118,64 +118,6 @@ Inputs.table(data, { value: data })
 
 [Link to the data download page](https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-energia-electrica)
 
-[//]: # (```js)
-
-[//]: # (Plot.plot&#40;{)
-
-[//]: # (  marginRight: 200,)
-
-[//]: # (  color: {)
-
-[//]: # (    legend: true,)
-
-[//]: # (    scheme: "Greys",)
-
-[//]: # (    reverse: true,)
-
-[//]: # (    type: "quantile",)
-
-[//]: # (    label: "Energy produced [GWh?]",)
-
-[//]: # (    tickFormat: &#40;d&#41; => d.toFixed&#40;1&#41;)
-
-[//]: # (  },)
-
-[//]: # (  x: { tickFormat: &#40;d&#41; => `${d}` },)
-
-[//]: # (  y: { tickFormat: Plot.formatMonth&#40;"en", "short"&#41; },)
-
-[//]: # (  marks: [)
-
-[//]: # (    Plot.cell&#40;)
-
-[//]: # (      foo,)
-
-[//]: # (      Plot.group&#40;)
-
-[//]: # (        { fill: "median" },)
-
-[//]: # (        {)
-
-[//]: # (          x: &#40;d&#41; => d.date.getFullYear&#40;&#41;,)
-
-[//]: # (          y: &#40;d&#41; => d.date.getMonth&#40;&#41;,)
-
-[//]: # (          fill: "value",)
-
-[//]: # (          fy: "col")
-
-[//]: # (        })
-
-[//]: # (      &#41;)
-
-[//]: # (    &#41;)
-
-[//]: # (  ])
-
-[//]: # (}&#41;)
-
-[//]: # (```)
-
 ```js
 let dataLast = data.sort((a, b) => b.date - a.date)[0]
 
