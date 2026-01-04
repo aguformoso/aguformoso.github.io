@@ -136,8 +136,33 @@ Plot.plot({
 </div>
 
 <div class="card grid-colspan-2">
-<h2>Imports and exports per country</h2>
-<h3>Under construction... stay tuned!</h3>
+
+```js
+Plot.plot({
+    title:'Cumulative energy generation',
+    subtitle:'By power plant, since the year 2000',
+    marginLeft: 100,
+    color: {
+        legend: false, // previous color legend should be enough
+        domain: centrales.features.map((f) => f.properties.name),
+    },
+    marks: [
+        Plot.barX(
+            d3.sort(
+                d3.flatGroup(foo, d=>d.date),
+                d=>d[0] // flatGroup key
+            ).reverse()[0][1],
+            {
+                x: "value",
+                y: "col",
+                fill: 'col',
+                sort: { y: "x", reverse: true }
+            }
+        ),
+        Plot.ruleX([0])
+    ]
+})
+```
 </div>
 
 </div>
