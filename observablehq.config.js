@@ -17,7 +17,15 @@ export default {
    ],
 
   // Content to add to the head of the page, e.g. for a favicon:
-  head: '<link rel="icon" href="observable.png" type="image/png" sizes="32x32">',
+  head: '<!-- Google tag (gtag.js) -->\n' +
+      '<script async src="https://www.googletagmanager.com/gtag/js?id=G-4MZS95K7C2"></script>\n' +
+      '<script>\n' +
+      '  window.dataLayer = window.dataLayer || [];\n' +
+      '  function gtag(){dataLayer.push(arguments);}\n' +
+      '  gtag(\'js\', new Date());\n' +
+      '\n' +
+      '  gtag(\'config\', \'G-4MZS95K7C2\');\n' +
+      '</script><link rel="icon" href="observable.png" type="image/png" sizes="32x32">',
 
   // The path to the source root.
   root: "src",
@@ -33,6 +41,6 @@ export default {
   search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
   typographer: false, // smart quotes and other typographic improvements
-  // preserveExtension: false, // drop .html from URLs
-  // preserveIndex: false, // drop /index from URLs
+  preserveExtension: false, // drop .html from URLs
+  preserveIndex: false, // drop /index from URLs
 };
