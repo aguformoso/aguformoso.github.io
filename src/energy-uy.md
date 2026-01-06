@@ -3,6 +3,10 @@ theme: [light, dark, alt, wide]
 toc: false
 ---
 
+```js
+import {exports, imports} from "./components/exports-uy.js";
+```
+
 # Electricity grid dashboard
 ## Uruguay
 
@@ -167,18 +171,95 @@ Plot.plot({
 
 </div>
 
-## Data tables
-
-An easier way to explore the data.
-
-### The original data
-
-This is the data from the source, holding one datum per month, with each datum containing values for each of the plants, and also containing totals and subtotals.
-<div class="card" style="padding: 0;">
+<div class="card grid-colspan-4 grid-rowspan-1">
 
 ```js
-Inputs.table(data, { value: data })
+let exportsUy = await exports();
+let importsUy = await imports();
+let exportsUyByCountry = ["Brasil", "Argentina"]
+    .map((col) =>
+        exportsUy.map((d) => {
+            const entries = Object.entries(d);
+            const value = d3.sum(
+                entries.filter(([name, value]) => name.includes(col)).map((d) => d[1])
+            );
+            return { date: d.date, col, value };
+        })
+    )
+    .flat().map(d => ({...d, type:'export'}))
+let importsUyByCountry = ["Brasil", "Argentina"]
+    .map((col) =>
+        importsUy.map((d) => {
+            const entries = Object.entries(d);
+            const value = d3.sum(
+                entries.filter(([name, value]) => name.includes(col)).map((d) => d[1])
+            );
+            return { date: d.date, col, value:value*-1 };
+        })
+    )
+    .flat().map(d => ({...d, type:'import'}))
 ```
+
+```js
+Plot.plot({
+    title:'Exports timeline',
+    subtitle:'By country',
+    width,
+    // height:width*9/16/2,
+    tip:true,
+  color: {
+    legend: true,
+      scheme: 'Paired',
+    domain: d3.cross(['Argentina', 'Brasil'], ['export', 'import']).map(([a,b]) => `${a}-${b}`),
+  },
+  marks: [
+    Plot.areaY([...exportsUyByCountry, ...importsUyByCountry], { x: "date", y: "value", fill: d=>`${d.col}-${d.type}` }),
+    Plot.ruleY([0]),
+    Plot.ruleX([chosen]),
+      
+  ]
+})
+```
+
+</div>
+
+## Data tables
+
+This is another way to explore the data. after fetching the data from the source it needs to go through some transformations.
+
+<div class="grid grid-cols-4">
+
+<div class="card grid-colspan-2">
+
+# Energyby power plant
+
+```js
+Inputs.table(foo)
+```
+</div>
+
+
+<div class="card grid-colspan-2">
+
+# Exports & imports
+
+```js
+Inputs.table([...exportsUyByCountry, ...importsUyByCountry])
+```
+
+</div>
+
+<div class="card grid-colspan-4">
+
+# The original data
+
+This is the data as published by the source, holding one datum per month, with each datum containing values for each of the plants, and also containing totals and subtotals.
+
+```js
+Inputs.table(data)
+```
+
+</div>
 
 </div>
 
@@ -382,4 +463,4 @@ import * as Inputs from "npm:@observablehq/inputs";
 
 This dashboard was inspired by Observable's [U.S. electricity grid dashboard](). Data was collected from the [Government of Uruguay](https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-energia-electrica).
 
-Like it? Leave a star here on GitHub! More data will be added based on interest.
+Like it? Leave a star [on GitHub](https://github.com/aguformoso/aguformoso.github.io)! More data will be added based on interest.
