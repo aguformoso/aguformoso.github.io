@@ -97,7 +97,7 @@ Plot.plot({
     x:{ label:'Date'},
     y:{ label:'Power generated' },
   marks: [
-    Plot.areaY(d3.sort(foo, d=>d.date), { x: "date", y: "value", fill: "col" }),
+    Plot.areaY(d3.sort(foo, d=>d.date), { x: "date", y: "value", fill: "col", tip: true }),
     Plot.ruleY([0]),
     Plot.ruleX([chosen]),
       
@@ -132,6 +132,7 @@ Plot.plot({
             {
                 x: "value",
                 y: "col",
+                tip: true,
                 fill: 'col',
                 sort: { y: "x", reverse: true }
             }
@@ -166,6 +167,7 @@ Plot.plot({
             {
                 x: "value",
                 y: "col",
+                tip: true,
                 fill: 'col',
                 sort: { y: "x", reverse: true }
             }
@@ -220,7 +222,7 @@ Plot.plot({
     domain: d3.cross(['Argentina', 'Brasil'], ['export', 'import']).map(([a,b]) => `${a}-${b}`),
   },
   marks: [
-    Plot.areaY([...exportsUyByCountry, ...importsUyByCountry], { x: "date", y: "value", fill: d=>`${d.col}-${d.type}` }),
+    Plot.areaY([...exportsUyByCountry, ...importsUyByCountry], { x: "date", y: "value", tip: true, fill: d=>`${d.col}-${d.type}` }),
     Plot.ruleY([0]),
     Plot.ruleX([chosen]),
       
