@@ -99,7 +99,7 @@ Plot.plot({
   marks: [
     Plot.areaY(d3.sort(foo, d=>d.date), { x: "date", y: "value", fill: "col", tip: true }),
     Plot.ruleY([0]),
-    Plot.ruleX([chosen]),
+    Plot.ruleX([chosen], { stroke: 'var(--theme-foreground-focus)', strokeWidth: 5 }),
       
   ]
 })
