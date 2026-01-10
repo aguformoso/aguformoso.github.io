@@ -93,7 +93,9 @@ Plot.plot({
   color: {
     legend: false,
     domain: centrales.features.map((f) => f.properties.name),
-  },
+  }, 
+    x:{ label:'Date'},
+    y:{ label:'Power generated' },
   marks: [
     Plot.areaY(d3.sort(foo, d=>d.date), { x: "date", y: "value", fill: "col" }),
     Plot.ruleY([0]),
@@ -116,6 +118,8 @@ Plot.plot({
         legend: false, // previous color legend should be enough
         domain: centrales.features.map((f) => f.properties.name),
     },
+    x:{ label: 'Power' },
+    y:{ label: 'Power plant' },
     marks: [
         Plot.barX(
             d3
@@ -150,6 +154,8 @@ Plot.plot({
         legend: false, // previous color legend should be enough
         domain: centrales.features.map((f) => f.properties.name),
     },
+    x:{ label: 'Power'},
+    y:{ label: 'Power plant' },
     marks: [
         Plot.barX(
             d3.flatRollup(
