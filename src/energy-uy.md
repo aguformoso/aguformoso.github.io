@@ -152,10 +152,11 @@ Plot.plot({
     },
     marks: [
         Plot.barX(
-            d3.sort(
-                d3.flatGroup(foo, d=>d.date),
-                d=>d[0] // flatGroup key
-            ).reverse()[0][1],
+            d3.flatRollup(
+                foo, 
+                ds=>d3.sum(ds, d=>d.value), 
+                d=>d.col
+            ).map(([col, value]) => ({col, value})),  // keep the {col, value} structure
             {
                 x: "value",
                 y: "col",
