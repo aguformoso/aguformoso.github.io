@@ -121,7 +121,7 @@ Plot.plot({
             d3
                 .flatRollup(
                     dataChosen,
-                    (ds) => d3.sum(ds.map((d) => d.value)),
+                    (ds) => d3.sum(ds.map((d) => d?.value || 0)),
                     (d) => d.col
                 )
                 .map((d) => ({ col: d[0], value: d[1] })),
@@ -154,7 +154,7 @@ Plot.plot({
         Plot.barX(
             d3.flatRollup(
                 foo, 
-                ds=>d3.sum(ds, d=>d.value), 
+                ds=>d3.sum(ds, d=>d?.value || 0), 
                 d=>d.col
             ).map(([col, value]) => ({col, value})),  // keep the {col, value} structure
             {
@@ -278,24 +278,24 @@ let centrales = ({
     {
       type: "Feature",
       geometry: { type: "Point", coordinates: [-56.421037, -32.831182] },
-      properties: { name: "Terra", power: dataChosen.find(d => d.col === 'Terra').value }
+      properties: { name: "Terra", power: dataChosen.find(d => d.col === 'Terra')?.value || 0 }
     },
     {
       type: "Feature",
       geometry: { type: "Point", coordinates: [-56.806039, -32.873816] },
-      properties: { name: "Baygorria", power: dataChosen.find(d => d.col === 'Baygorria').value }
+      properties: { name: "Baygorria", power: dataChosen.find(d => d.col === 'Baygorria')?.value || 0 }
     },
     {
       type: "Feature",
       geometry: { type: "Point", coordinates: [-57.451691, -33.056311] },
-      properties: { name: "Palmar", power: dataChosen.find(d => d.col === 'Palmar').value }
+      properties: { name: "Palmar", power: dataChosen.find(d => d.col === 'Palmar')?.value || 0 }
     },
     {
       type: "Feature",
       geometry: { type: "Point", coordinates: [-57.938613, -31.275204] },
       properties: {
         name: "Salto Grande",
-        power: dataChosen.find(d => d.col === 'Salto Grande').value
+        power: dataChosen.find(d => d.col === 'Salto Grande')?.value || 0
       }
     },
     {
@@ -303,7 +303,7 @@ let centrales = ({
       geometry: { type: "Point", coordinates: [-56.197297, -34.885294] },
       properties: { 
           name: "Batlle",
-          power: dataChosen.find(d => d.col === 'Batlle').value
+          power: dataChosen.find(d => d.col === 'Batlle')?.value || 0
       }
     },
       {
@@ -311,7 +311,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-56.53874, -34.750461] },
           properties: {
               name: "Punta del Tigre",
-              power: dataChosen.find(d => d.col === 'Punta del Tigre').value
+              power: dataChosen.find(d => d.col === 'Punta del Tigre')?.value || 0
           }
       },
       {
@@ -319,7 +319,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-56.53874, -34.750461] }, // same as Punta del Tigre
           properties: {
               name: "La Tablada",
-              power: dataChosen.find(d => d.col === 'La Tablada').value
+              power: dataChosen.find(d => d.col === 'La Tablada')?.value || 0
           }
       },
       {
@@ -327,7 +327,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-56.53874, -34.750461] }, // same as Punta del Tigre
           properties: {
               name: "Solar",
-              power: dataChosen.find(d => d.col === 'Solar').value
+              power: dataChosen.find(d => d.col === 'Solar')?.value || 0
           }
       },
       {
@@ -335,7 +335,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-56.224468, -32.248476] }, // Pampa
           properties: {
               name: "E_licos",
-              power: dataChosen.find(d => d.col === 'E_licos').value
+              power: dataChosen.find(d => d.col === 'E_licos')?.value || 0
           }
       },
       {
@@ -343,7 +343,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-55.102324, -33.292332] }, // Valentines
           properties: {
               name: "E_licos",
-              power: dataChosen.find(d => d.col === 'E_licos').value
+              power: dataChosen.find(d => d.col === 'E_licos')?.value || 0
           }
       },
       {
@@ -351,7 +351,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-56.592939, -33.831058] }, // Arias
           properties: {
               name: "E_licos",
-              power: dataChosen.find(d => d.col === 'E_licos').value
+              power: dataChosen.find(d => d.col === 'E_licos')?.value || 0
           }
       },
       {
@@ -359,7 +359,7 @@ let centrales = ({
           geometry: { type: "Point", coordinates: [-55.5, -30.5] },
           properties: {
               name: "Agentes Productores",
-              power: dataChosen.find(d => d.col === 'Agentes Productores').value
+              power: dataChosen.find(d => d.col === 'Agentes Productores')?.value || 0
           }
       }
   ]
