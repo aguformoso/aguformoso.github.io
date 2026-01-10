@@ -34,7 +34,7 @@ let start = new Date(d3.min(data, d=>d.date))
 <div style="display: flex; flex-direction: column; align-items: center;">
     <h1 style="margin-top: 0.5rem;">${chosen.toLocaleDateString("es-UY")}</h1>
     <div style="display: flex; align-items: center;">
-        <div>2000-01-01</div>
+        <div>${new Date('2000-01-01').toLocaleDateString("es-UY")}</div>
         ${dateInput}
         <div style="padding-left: 0.5rem;">${dataLast.date.toLocaleDateString("es-UY")}</div>
     </div>
