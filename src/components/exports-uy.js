@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-import * as Plot from "npm:@observablehq/plot";
 import * as d3 from "npm:d3";
 import {FileAttachment} from "observablehq:stdlib";
 
